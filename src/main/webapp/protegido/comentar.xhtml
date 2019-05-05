@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../template/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h3>Valorizar Nota</h3>
+                <h:form id="frm">
+                    <p:growl id="growl" sticky="true" showDetail="true"/>
+                    <p:dataTable value="#{comentarController.lstNotas}" var="nota" paginator="true" rows="10"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15"
+                                 currentPageReportTemplate="Página :{currentPage} de {totalPages}"
+                                 >
+                        <p:column headerText="Persona">
+                            <p:outputLabel value="#{nota.persona.apellidos}  #{nota.persona.nombres}" />
+                        </p:column>
+                        <p:column headerText="Categoria">
+                            <h:outputText value="#{nota.categoria.nombre}" />
+                        </p:column>
+                        <p:column headerText="Fecha">
+                            <p:outputLabel value="#{nota.fecha}" />
+                        </p:column>
+                        <p:column headerText="Accion">
+                            <p:commandLink value="Valorar" action="valorar" actionListener="#{comentarController.asignar(nota)}" >
+                            </p:commandLink>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

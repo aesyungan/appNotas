@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" ></link>
+    </h:head>
+    <h:body style="background: #ccc">
+        <h:form id="frm" class="d-flex justify-content-center mt-4 ">
+            <p:fieldset legend="Login" styleClass="" >
+                <p:messages autoUpdate="true"  showDetail="true"/>
+                <!--            <p:messages id="messages" showDetail="true" closable="true">
+                                <p:autoUpdate />
+                            </p:messages>-->
+                <p:panelGrid columns="3" columnClasses="border-0" styleClass="border-0" style="border-0">
+                    <p:outputLabel for="usuario" value="Usuario" />
+                    <p:inputText id="usuario" required="true" value="#{autenticacion.usuario.usuario}" />
+                    <p:message for="usuario" />
+                    <p:outputLabel for="clave" value="Usuario" />
+                    <p:password id="clave" required="true" value="#{autenticacion.usuario.clave}" />
+                    <p:message for="clave" />
+                    <h:column />
+                    <p:commandButton styleClass="float-right " update="frm" icon="ui-icon-key" value="Login" action="#{autenticacion.autenticar()}"></p:commandButton>
+                    <!--<p:growl id="growl" showDetail="true" sticky="true" />--> 
+
+                </p:panelGrid>
+            </p:fieldset>
+        </h:form>
+        <p:link value="Crear Cuenta" outcome="usuario"></p:link>
+
+        <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+    </h:body>
+</html>
+

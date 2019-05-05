@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h2>Nueva Nota</h2>
+                <h:form id="frm">
+                     <p:growl id="growl" showDetail="true" sticky="true" />
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Cateroria"  for="categoria"/>
+                        <p:selectOneMenu required="true" id="categoria" value="#{notaController.categoria.codigo}">
+                            <f:selectItems value="#{notaController.lstCatehgoria}" itemValue="#{cat.codigo}" var="cat" itemLabel="#{cat.nombre}" >
+
+                            </f:selectItems>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Encabezado"  for="Encabezado"/>
+                        <p:inputText required="true" id="Encabezado" value="#{notaController.nota.encabezado}"/>
+
+                        <p:outputLabel value="Cuerpo"  for="Cuerpo"/>
+                        <p:inputTextarea required="true" rendered="true" id="Cuerpo" value="#{notaController.nota.cuerpo}"/>
+                        <h:column></h:column>
+                        <p:commandButton value="Registrar" actionListener="#{notaController.registrar()}" update="frm"></p:commandButton>
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
